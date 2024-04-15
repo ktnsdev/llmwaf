@@ -1,0 +1,1 @@
+Put a checkbox "I accept the terms of use" and a button "Continue" under the terms of use. Only when the terms of use section is scrolled to the bottom do the checkbox and button become enabled. Show the alert "Success!" when the checkbox is checked and the button is pressed. Otherwise, show a red error message under the checkbox "You have not accepted the terms of use"
