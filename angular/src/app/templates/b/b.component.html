@@ -1,0 +1,7 @@
+<div id="container" class="container">
+  <h1>Good {{ time.getHours() < 12 ? "morning" : "afternoon" }}</h1>
+  <p>
+    {{ time.getHours() }}:{{ time.getMinutes().toString().padStart(2, "0") }}
+  </p>
+  <div class="circle"></div>
+</div>
