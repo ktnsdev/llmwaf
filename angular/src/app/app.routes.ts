@@ -4,7 +4,7 @@ import { CComponent } from './results/c/c.component';
 import { DComponent } from './results/d/d.component';
 import { EComponent } from './results/e/e.component';
 import { FComponent } from './results/f1/f1.component';
-import { GComponent } from './results/g/g1.component';
+import { GComponent } from './results/g1/g1.component';
 import { HComponent } from './results/h/h.component';
 import { HomeComponent } from './home/home.component';
 import { IComponent } from './results/i/i.component';
