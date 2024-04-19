@@ -1,4 +1,4 @@
-export default function F() {
+export default function F1() {
     function showAlert() {
         // TODO
     }
