@@ -1,1 +1,0 @@
-Create a card component that has a title and description. The card should have drop shadow, rounded corners, grey background, and a divider between the title and the description. Put one card in the middle of the screen that relates to the heading.
