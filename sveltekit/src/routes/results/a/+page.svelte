@@ -1,4 +1,4 @@
-<script setup lang="ts"></script>
+<script lang="ts"></script>
 
 <div id="container" class="container"></div>
 
