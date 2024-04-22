@@ -1,6 +1,10 @@
+<script>
+    import { page } from '$app/stores';
+</script>
+
 <div class="container">
     <h1>Current path</h1>
-    <!-- /* TODO */ -->
+    <p>{$page.url.pathname}</p>
 </div>
 
 <style>

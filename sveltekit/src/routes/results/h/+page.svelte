@@ -1,4 +1,29 @@
-<div id="container" class="container">
+<script>
+    import Toast from './ToastClaude.svelte';
+    import { onMount } from 'svelte';
+  
+    let showToast = false;
+  
+    onMount(() => {
+        const handleScroll = () => {
+            const scrollHeight = document.documentElement.scrollHeight;
+            const scrollTop = document.documentElement.scrollTop;
+            const clientHeight = document.documentElement.clientHeight;
+  
+            if (scrollTop + clientHeight >= scrollHeight && !showToast) {
+                showToast = true;
+            }
+        };
+  
+        window.addEventListener('scroll', handleScroll);
+  
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    });
+  </script>
+  
+  <div id="container" class="container">
     <section>
         <h2>Section 1</h2>
         <p>
@@ -7,7 +32,7 @@
             maxime dolore! Magni expedita libero natus nobis, distinctio placeat?
         </p>
     </section>
-
+  
     <section>
         <h2>Section 2</h2>
         <p>
@@ -16,7 +41,7 @@
             maxime dolore! Magni expedita libero natus nobis, distinctio placeat?
         </p>
     </section>
-
+  
     <section>
         <h2>Section 3</h2>
         <p>
@@ -25,7 +50,7 @@
             maxime dolore! Magni expedita libero natus nobis, distinctio placeat?
         </p>
     </section>
-
+  
     <section>
         <img src="https://source.unsplash.com/random/800x600" alt="Random" />
         <h2>Section 4</h2>
@@ -35,7 +60,7 @@
             maxime dolore! Magni expedita libero natus nobis, distinctio placeat?
         </p>
     </section>
-
+  
     <section>
         <h2>Section 5</h2>
         <p>
@@ -44,7 +69,7 @@
             maxime dolore! Magni expedita libero natus nobis, distinctio placeat?
         </p>
     </section>
-
+  
     <section>
         <h2>Section 6</h2>
         <p>
@@ -53,7 +78,7 @@
             maxime dolore! Magni expedita libero natus nobis, distinctio placeat?
         </p>
     </section>
-
+  
     <section>
         <h2>Section 7</h2>
         <p>
@@ -62,7 +87,7 @@
             maxime dolore! Magni expedita libero natus nobis, distinctio placeat?
         </p>
     </section>
-
+  
     <section>
         <h2>Section 8</h2>
         <p>
@@ -71,7 +96,7 @@
             maxime dolore! Magni expedita libero natus nobis, distinctio placeat?
         </p>
     </section>
-
+  
     <section>
         <h2>Section 9</h2>
         <p>
@@ -80,7 +105,7 @@
             maxime dolore! Magni expedita libero natus nobis, distinctio placeat?
         </p>
     </section>
-
+  
     <section>
         <h2>Section 10</h2>
         <p>
@@ -88,10 +113,10 @@
             architecto laborum suscipit, voluptate doloribus, minus atque impedit nostrum numquam
             maxime dolore! Magni expedita libero natus nobis, distinctio placeat?
         </p>
-
+  
         <img src="https://source.unsplash.com/random/800x600" alt="Random" />
     </section>
-
+  
     <section>
         <h2>Section 11</h2>
         <p>
@@ -100,7 +125,7 @@
             maxime dolore! Magni expedita libero natus nobis, distinctio placeat?
         </p>
     </section>
-
+  
     <section>
         <h2>Section 12</h2>
         <p>
@@ -108,10 +133,10 @@
             architecto laborum suscipit, voluptate doloribus, minus atque impedit nostrum numquam
             maxime dolore! Magni expedita libero natus nobis, distinctio placeat?
         </p>
-
+  
         <img src="https://source.unsplash.com/random/800x600" alt="Random" />
     </section>
-
+  
     <section>
         <h2>Section 13</h2>
         <p>
@@ -120,7 +145,7 @@
             maxime dolore! Magni expedita libero natus nobis, distinctio placeat?
         </p>
     </section>
-
+  
     <section>
         <h2>Section 14</h2>
         <p>
@@ -128,10 +153,10 @@
             architecto laborum suscipit, voluptate doloribus, minus atque impedit nostrum numquam
             maxime dolore! Magni expedita libero natus nobis, distinctio placeat?
         </p>
-
+  
         <img src="https://source.unsplash.com/random/800x600" alt="Random" />
     </section>
-
+  
     <section>
         <h2>Section 15</h2>
         <p>
@@ -140,9 +165,13 @@
             maxime dolore! Magni expedita libero natus nobis, distinctio placeat?
         </p>
     </section>
-</div>
-
-<style>
+  
+    {#if showToast}
+      <Toast />
+  {/if}
+  </div>
+  
+  <style>
     .container {
         padding: 1rem;
         min-width: 100vw;
@@ -152,19 +181,20 @@
         align-items: center;
         gap: 1.25rem;
     }
-
+  
     h2 {
         font-size: 1.5rem;
         line-height: 2rem;
         font-weight: bold;
     }
-
+  
     p {
         font-size: 1rem;
         color: #4a5568;
     }
-
+  
     img {
         width: 100%;
     }
-</style>
+  </style>
+  

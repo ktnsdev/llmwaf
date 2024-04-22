@@ -1,0 +1,36 @@
+<script lang="ts">
+    let isVisible = true;
+
+    function toggleVisibility() {
+        isVisible = !isVisible;
+    }
+</script>
+
+<div id="container" class="container">
+    {#if isVisible}
+        <div class="circle" />
+    {/if}
+
+    <button on:click={toggleVisibility}>
+        {isVisible ? 'Hide Circle' : 'Show Circle'}
+    </button>
+</div>
+
+<style>
+    .container {
+        padding: 1rem;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .circle {
+        width: 100px;
+        height: 100px;
+        border-radius: 9999px;
+        background-color: rgb(254, 215, 170);
+    }
+</style>

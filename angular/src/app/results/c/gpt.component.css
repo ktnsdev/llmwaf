@@ -1,0 +1,9 @@
+.container {
+  padding: 1rem;
+}
+
+.privacy-link {
+  color: blue; /* You can adjust the color as needed */
+  text-decoration: underline;
+  cursor: pointer;
+}

@@ -1,11 +1,29 @@
 <script lang="ts"></script>
 
-<div id="container" class="container"></div>
+<main>
+  <div class="content">
+    <h1>Hello</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  </div>
+</main>
 
 <style>
-    .container {
-        width: 100%;
-        height: 100%;
-        padding: 0.75rem;
-    }
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .content {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
 </style>

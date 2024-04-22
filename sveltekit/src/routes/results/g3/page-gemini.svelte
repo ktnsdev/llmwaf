@@ -1,0 +1,45 @@
+<script>
+  let numberValue = "";
+  let errorMessage = "";
+
+  function preventDefault(event) {
+    event.preventDefault();
+    if (numberValue < 1000) {
+      errorMessage = ""; // Clear error message if input is valid
+    } else {
+      errorMessage = "Input exceeds the maximum value";
+    }
+    // Handle the submitted number here (e.g., console.log(numberValue))
+  }
+</script>
+
+<div id="container" class="container">
+  <form on:submit={preventDefault}>
+    <label for="numberInput">Enter a number:</label>
+    <div style="display: flex; align-items: center;">
+      <input type="number" id="numberInput" bind:value={numberValue}>
+      <button type="submit">Submit</button>
+    </div>
+    {#if errorMessage}
+      <p style="color: red;">{errorMessage}</p>
+    {/if}
+  </form>
+</div>
+
+
+<style>
+  .container {
+    padding: 1rem;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+</style>

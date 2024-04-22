@@ -1,9 +1,38 @@
+"use client";
+
+import "./styles.module.css";
+
+import { useEffect, useState } from "react";
+
 export default function H() {
+    const [showToast, setShowToast] = useState(false);
+
+    useEffect(() => {
+        function handleScroll() {
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            if (scrollTop + clientHeight >= scrollHeight - 50) {
+                setShowToast(true);
+            }
+        }
+
+        window.addEventListener("scroll", handleScroll);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
     return (
         <div
             id="container"
-            className="min-w-screen min-h-screen p-4 flex flex-col items-center gap-5"
+            className="min-w-screen min-h-screen p-4 flex flex-col items-center gap-5 relative"
         >
+            {showToast && (
+                <div className="toast animate-fade-in absolute bottom-10 bg-gray-800 text-white px-4 py-2 rounded">
+                    You've reached the bottom of the page!
+                </div>
+            )}
+
             <section>
                 <h2 className="text-2xl font-bold">Section 1</h2>
                 <p className="text-m text-gray-700">

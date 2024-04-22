@@ -1,10 +1,19 @@
-<script setup lang="ts">
-    const isHidden: boolean = false;
+<script lang="ts">
+    let isVisible = true;
+
+    function toggleVisibility() {
+        isVisible = !isVisible;
+    }
 </script>
 
 <div id="container" class="container">
-    <div class="circle" />
-    <!-- /* TODO */ -->
+    {#if isVisible}
+        <div class="circle" />
+    {/if}
+
+    <button on:click={toggleVisibility}>
+        {isVisible ? 'Hide Circle' : 'Show Circle'}
+    </button>
 </div>
 
 <style>

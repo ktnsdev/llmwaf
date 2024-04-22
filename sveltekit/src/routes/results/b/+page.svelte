@@ -20,6 +20,11 @@
         align-items: center;
         justify-content: center;
         gap: 1rem;
+        background-color: lightgreen; /* Add this line */
+    }
+
+    .container > * {
+        filter: blur(2px); /* Add this line to blur child components */
     }
 
     h1 {

@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-d',
   standalone: true,
-  imports: [],
+  imports: [Location],
   templateUrl: './d.component.html',
-  styleUrl: './d.component.css'
+  styleUrls: ['./d.component.css'],
 })
-export class DComponent {
+export class DComponent implements OnInit {
+  currentPath: string = '';
 
+  constructor(private location: Location) {}
+
+  ngOnInit() {
+    this.currentPath = this.location.path();
+  }
 }

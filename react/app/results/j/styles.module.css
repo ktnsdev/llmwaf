@@ -1,0 +1,14 @@
+.rainbow-bg {
+    background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+    background-size: 400% 100%;
+    animation: rainbow-animation 2s linear infinite;
+}
+
+@keyframes rainbow-animation {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 100% 0;
+    }
+}

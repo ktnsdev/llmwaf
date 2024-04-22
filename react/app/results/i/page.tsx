@@ -1,12 +1,49 @@
+"use client";
+
+import React, { useEffect, useRef, useState } from "react";
+
 export default function I() {
-    // TODO
+    const [isScrolledToBottom, setIsScrolledToBottom] = useState(false);
+    const [accepted, setAccepted] = useState(false);
+    const termsRef = useRef(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollHeight = termsRef.current.scrollHeight;
+            const scrollTop = termsRef.current.scrollTop;
+            const clientHeight = termsRef.current.clientHeight;
+
+            if (scrollHeight - scrollTop === clientHeight) {
+                setIsScrolledToBottom(true);
+            } else {
+                setIsScrolledToBottom(false);
+            }
+        };
+
+        const termsDiv = termsRef.current;
+        termsDiv.addEventListener("scroll", handleScroll);
+
+        return () => {
+            termsDiv.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
+    const handleCheckboxChange = () => {
+        setAccepted(!accepted);
+    };
+
+    const handleSubmit = () => {
+        if (accepted) {
+            alert("Success!");
+        }
+    };
 
     return (
         <div
             id="container"
             className="p-4 min-w-screen h-screen min-h-screen flex flex-col items-center"
         >
-            <div className="bg-gray-200 p-4 w-1/2 h-1/2 rounded-md overflow-scroll">
+            <div ref={termsRef} className="bg-gray-200 p-4 w-1/2 h-1/2 rounded-md overflow-scroll">
                 <p>
                     <p className="font-bold">[Company Name] Terms of Use</p>
                     <br />
@@ -84,7 +121,28 @@ export default function I() {
                 </p>
             </div>
 
-            {/* TODO */}
+            <div className="mt-4">
+                <input
+                    type="checkbox"
+                    id="accept-terms"
+                    checked={accepted}
+                    onChange={handleCheckboxChange}
+                    disabled={!isScrolledToBottom}
+                />
+                <label htmlFor="accept-terms" className="ml-2">
+                    I accept the terms of use
+                </label>
+                {!accepted && !isScrolledToBottom && (
+                    <p className="text-red-500">You have not accepted the terms of use</p>
+                )}
+            </div>
+            <button
+                className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded disabled:bg-gray-400 disabled:cursor-not-allowed"
+                onClick={handleSubmit}
+                disabled={!accepted || !isScrolledToBottom}
+            >
+                Continue
+            </button>
         </div>
     );
 }

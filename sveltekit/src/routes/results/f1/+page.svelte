@@ -1,11 +1,11 @@
 <script setup lang="ts">
     function showAlert() {
-        // TODO
+        alert("You've got an email");
     }
 </script>
 
 <div class="container">
-    <!-- TODO -->
+    <button on:click={showAlert}>Check Email</button>
 </div>
 
 <style>

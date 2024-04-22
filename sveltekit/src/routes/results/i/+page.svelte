@@ -1,9 +1,27 @@
-<script setup lang="ts">
-    // TODO
+<script lang="ts">
+    let isTermsAccepted = false;
+    let isScrolledToBottom = false;
+
+    function handleScroll() {
+        const termsContainer = document.querySelector('.terms-container');
+        const isAtBottom = termsContainer.scrollHeight - termsContainer.scrollTop === termsContainer.clientHeight;
+
+        isScrolledToBottom = isAtBottom;
+    }
+
+    function handleCheckboxChange() {
+        isTermsAccepted = !isTermsAccepted;
+    }
+
+    function handleContinue() {
+        if (isTermsAccepted) {
+            alert('Success!');
+        }
+    }
 </script>
 
 <div id="container" class="container">
-    <div class="terms-container">
+    <div class="terms-container" on:scroll={handleScroll}>
         <p class="title">[Company Name] Terms of Use</p>
         <br />
         1. Introduction
@@ -74,7 +92,23 @@
         <br />
     </div>
 
-    <!-- TODO -->
+    <div class="controls">
+        <label>
+            <input
+                type="checkbox"
+                bind:checked={isTermsAccepted}
+                on:change={handleCheckboxChange}
+                disabled={!isScrolledToBottom}
+            />
+            I accept the terms of use
+        </label>
+        {#if !isTermsAccepted && isScrolledToBottom}
+            <p class="error">You have not accepted the terms of use</p>
+        {/if}
+        <button on:click={handleContinue} disabled={!isTermsAccepted || !isScrolledToBottom}>
+            Continue
+        </button>
+    </div>
 </div>
 
 <style>
@@ -98,5 +132,13 @@
 
     .title {
         font-weight: bold;
+    }
+
+    .controls {
+        margin-top: 1rem;
+    }
+
+    .error {
+        color: red;
     }
 </style>

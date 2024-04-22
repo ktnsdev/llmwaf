@@ -1,11 +1,14 @@
-<script setup lang="ts">
+<script lang="ts">
+    let count = 0;
+
     function showAlert() {
-        // TODO
+        count += 1;
+        alert(`You've got an email (${count})`);
     }
 </script>
 
 <div class="container">
-    <!-- TODO -->
+    <button on:click={showAlert}>Check Email</button>
 </div>
 
 <style>
