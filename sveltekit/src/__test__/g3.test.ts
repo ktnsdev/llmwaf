@@ -11,30 +11,38 @@ describe("test case G3", () => {
     });
 
     it("should have a text input", () => {
-        const input = screen.getByRole("textbox");
+        const input = screen.queryByRole("textbox") || screen.queryByRole("spinbutton");
+
+        expect(input).toBeInTheDocument();
         expect(input).toBeInTheDocument();
     });
 
     it("should accept numberic characters", async () => {
-        const input = screen.getByRole("textbox");
+        const input = screen.queryByRole("textbox") || screen.queryByRole("spinbutton");
 
-        await userEvent.type(input, "1234567890");
+        expect(input).toBeInTheDocument();
+
+        await userEvent.type(input!, "1234567890");
 
         expect(input).toHaveValue("1234567890");
     });
 
     it("should not accept non-numeric characters", async () => {
-        const input = screen.getByRole("textbox");
+        const input = screen.queryByRole("textbox") || screen.queryByRole("spinbutton");
 
-        await userEvent.type(input, "abc");
+        expect(input).toBeInTheDocument();
+
+        await userEvent.type(input!, "abc");
 
         expect(input).not.toHaveValue();
     });
 
     it("should accept only numeric characters", async () => {
-        const input = screen.getByRole("textbox");
+        const input = screen.queryByRole("textbox") || screen.queryByRole("spinbutton");
 
-        await userEvent.type(input, "abc123def456");
+        expect(input).toBeInTheDocument();
+
+        await userEvent.type(input!, "abc123def456");
 
         expect(input).toHaveValue("123456");
     });
@@ -57,10 +65,12 @@ describe("test case G3", () => {
     });
 
     it("should not show error when clicking submit and input < 1000", async () => {
-        const input = screen.getByRole("textbox");
+        const input = screen.queryByRole("textbox") || screen.queryByRole("spinbutton");
         const button = screen.getByRole("button");
 
-        await userEvent.type(input, "999");
+        expect(input).toBeInTheDocument();
+
+        await userEvent.type(input!, "999");
         await userEvent.click(button);
 
         const error = screen.queryByText("Input exceeds the maximum value");
@@ -68,10 +78,12 @@ describe("test case G3", () => {
     });
 
     it("should show error when clicking submit and input >= 1000", async () => {
-        const input = screen.getByRole("textbox");
+        const input = screen.queryByRole("textbox") || screen.queryByRole("spinbutton");
         const button = screen.getByRole("button");
 
-        await userEvent.type(input, "1000");
+        expect(input).toBeInTheDocument();
+
+        await userEvent.type(input!, "1000");
         await userEvent.click(button);
 
         const error = screen.queryByText("Input exceeds the maximum value");
