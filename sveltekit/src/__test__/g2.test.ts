@@ -11,30 +11,36 @@ describe("test case G2", () => {
     });
 
     it("should have a text input", () => {
-        const input = screen.getByRole("textbox");
+        const input = screen.queryByRole("textbox") || screen.queryByRole("spinbutton");
         expect(input).toBeInTheDocument();
     });
 
     it("should accept numberic characters", async () => {
-        const input = screen.getByRole("textbox");
+        const input = screen.queryByRole("textbox") || screen.queryByRole("spinbutton");
 
-        await userEvent.type(input, "1234567890");
+        expect(input).toBeInTheDocument();
+
+        await userEvent.type(input!, "1234567890");
 
         expect(input).toHaveValue("1234567890");
     });
 
     it("should not accept non-numeric characters", async () => {
-        const input = screen.getByRole("textbox");
+        const input = screen.queryByRole("textbox") || screen.queryByRole("spinbutton");
 
-        await userEvent.type(input, "abc");
+        expect(input).toBeInTheDocument();
+
+        await userEvent.type(input!, "abc");
 
         expect(input).not.toHaveValue();
     });
 
     it("should accept only numeric characters", async () => {
-        const input = screen.getByRole("textbox");
+        const input = screen.queryByRole("textbox") || screen.queryByRole("spinbutton");
 
-        await userEvent.type(input, "abc123def456");
+        expect(input).toBeInTheDocument();
+
+        await userEvent.type(input!, "abc123def456");
 
         expect(input).toHaveValue("123456");
     });

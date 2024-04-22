@@ -18,10 +18,10 @@ describe("test case A", () => {
     });
 
     it("should render a paragraph", () => {
-        expect(screen.getByRole("paragraph")).toBeInTheDocument();
+        expect(document.getElementsByTagName("p")[0]).toBeInTheDocument();
     });
 
     it("should render a paragraph that starts with lorem ipsum", () => {
-        expect(screen.getByRole("paragraph")).toHaveTextContent(/^Lorem ipsum/);
+        expect(document.getElementsByTagName("p")[0]).toHaveTextContent(/^Lorem ipsum/);
     });
 });

@@ -8,8 +8,8 @@
         "preview": "vite preview",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
         "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-        "test": "npx --node-options=\"--experimental-vm-modules\" jest --coverage",
-        "test:watch": "npx --node-options=\"--experimental-vm-modules\" jest --coverage --watch"
+        "test": "npx --node-options=\"--experimental-vm-modules\" jest --coverage --verbose",
+        "test:watch": "npx --node-options=\"--experimental-vm-modules\" jest --coverage --verbose --watch"
     },
     "devDependencies": {
         "@sveltejs/adapter-auto": "^3.0.0",

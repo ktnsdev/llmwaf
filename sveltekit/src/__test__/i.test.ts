@@ -3,6 +3,7 @@ import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/svelte";
 
 import I from "../routes/results/i/+page.svelte";
+import { jest } from "@jest/globals";
 import userEvent from "@testing-library/user-event";
 
 describe("test case I", () => {
